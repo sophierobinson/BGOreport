@@ -182,7 +182,7 @@ PI <- function(muNew, stdNew, fMax, epsilon){
   return(pnorm(Z))
 }
 #Figure 3.1
-PIacq0 <- PI(f.bar.star, std, currentbest, 0.1)
+PIacq0 <- PI(f.bar.star, std, currentbest, 0.2)
 PIacq1 <- melt(PIacq0)
 PIacq2 <- data.frame(PIacq1)
 gg3 <- ggplot(PIacq2)+
