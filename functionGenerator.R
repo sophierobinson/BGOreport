@@ -1,3 +1,8 @@
+#The following code produces the objective function for the Application (Eqn 4.1, Chapter 4)
+#This work is based on the code that can be found in the repository of GitHub at
+#https://github.com/gpirot/BGICLP.
+
+
 functionGenerator <- function(selectedWells,selectedGeology,sourceCoord,pNorm){
   geolName <- switch(selectedGeology,"A0","A4")
   file_name <- "C:/Users/robo/Documents/Sophie/uni work/3rd year/project/BGICLP-master/data/grid_25_wells_p1_A0_89_-36.txt"
