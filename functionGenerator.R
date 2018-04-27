@@ -1,6 +1,6 @@
 #The following code produces the objective function for the Application (Eqn 4.1, Chapter 4)
 #This work is based on the code that can be found in the repository of GitHub at
-#https://github.com/gpirot/BGICLP.
+#https://github.com/gpirot/BGICLP, by Pirot, G. and Krityakierne, T. and Ginsbourger, D. and Renard, P, published in 2017.
 
 
 functionGenerator <- function(selectedWells,selectedGeology,sourceCoord,pNorm){
