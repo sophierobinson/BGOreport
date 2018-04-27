@@ -1,3 +1,20 @@
+#The following code was used to run Bayesian Global Optimization for groundwater contamination source localization (Chapter 4)
+#It produces the Figures 4.3, 4.4, 4.5.
+#This work is based on the code that can be found in the repository of GitHub at
+#https://github.com/gpirot/BGICLP, by Pirot, G. and Krityakierne, T. and Ginsbourger, D. and Renard, P, published in 2017.
+
+#This code uses the package "DiceKriging" published by Olivier Roustant, David Ginsbourger, Yves Deville. Contributors: Clement Chevalier,
+#Yann Richet in 2015.
+#The url for this package is https://cran.r-project.org/web/packages/DiceKriging/DiceKriging.pdf
+#This code uses the package "DiceOptim" published by V. Picheny, D. Ginsbourger, O. Roustant
+#with contributions by M. Binois, C. Chevalier, S. Marmin, and T. Wagner in 2016.
+#The url for this package is https://cran.r-project.org/web/packages/DiceOptim/index.html
+#This code uses the package "DiceDesign" published by Jessica Franco, Delphine Dupuy, Olivier Roustant, Guillaume
+#Damblin and Bertrand Iooss in 2015.
+#The url for this package is https://cran.r-project.org/web/packages/DiceDesign/DiceDesign.pdf
+#This code uses the package "colorRamps" published by Tim Keitt in 2007.
+#The url for this package is https://cran.r-project.org/web/packages/colorRamps/colorRamps.pdf
+
 rm(list=ls())
 par(mfrow=c(1,1), mar=c(5.1, 4.1, 4.1, 2.1))
 #source("C:/Users/robo/Documents/Sophie/uni work/3rd year/project/BGICLP-master/src/functionGenerator.R")
@@ -90,7 +107,7 @@ library("DiceDesign")
    minresponse <- rep(min(myresponse),nrow(mydesign0))
    mindistance <- rep(min(sqrt((mydesign0[,1]-argmin[,1])^2+ (mydesign0[,2]-argmin[,2])^2)),nrow(mydesign0))
 
-   # RUN EGO and save figures in pdf
+   # RUN EGO and save figures in pdf (Figure 4.3)
    for(i in seq(1,nseq))
    {
       # GP model fitting and prediction 
@@ -159,6 +176,7 @@ library("DiceDesign")
  #  SAVE DESIGN
    save(res.design,res.cummin,res.mindist,file=paste("resultsEGOlhs4_100",n0,"+",nseq,".Rda",sep=""))
 
+#Figure 4.4
 #for plotting final scenario with source and minimum overlayed, run 100 iterations and use the gpmean plot
 hist(res.mindist)
 kmean.grid <- matrix(mypred$mean, ngridx, ngridy)
