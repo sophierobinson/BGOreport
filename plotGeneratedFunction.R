@@ -1,3 +1,8 @@
+#The following code was used to produce Figure 4.2.
+
+#This work is based on the code that can be found in the repository of GitHub at
+#https://github.com/gpirot/BGICLP, by Pirot, G. and Krityakierne, T. and Ginsbourger, D. and Renard, P, published in 2017.
+
 rm(list=ls())
 source("src/functionGenerator.R")
 # ***************************************************************
