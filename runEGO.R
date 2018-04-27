@@ -1,5 +1,5 @@
 #The following code was used to run Bayesian Global Optimization for groundwater contamination source localization (Chapter 4)
-#It produces the Figures 4.3, 4.4, 4.5.
+#It produces the Figures 4.3 and 4.4.
 #This work is based on the code that can be found in the repository of GitHub at
 #https://github.com/gpirot/BGICLP, by Pirot, G. and Krityakierne, T. and Ginsbourger, D. and Renard, P, published in 2017.
 
