@@ -1,3 +1,12 @@
+#The following code is the code used in Example 3.5.1 to and produces Figure 3.5 b)
+
+#This code uses the package "ggplot2" written by Haldey Wickham and Winston Chang, published in 2016.
+#The url for this package is https://cran.r-project.org/web/packages/ggplot2/ggplot2.pdf
+#This code uses the package "GenSA" written by Sylvain Gubian, Yang Xiang, Brian Suomela and Julia Hoeng, published in 2018.
+#The url for this package is https://cran.r-project.org/web/packages/GenSA/GenSA.pdf
+
+
+
 library(GenSA)
 library(ggplot2)
 
