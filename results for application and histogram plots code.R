@@ -1,3 +1,6 @@
+#The following code was used to produce Figure 4.5
+
+
 #for case 1 (geology 1 and source A) the source was found in 53 iterations
 #for case 2 (geology 1 and source B) the next closest point to the source is (101,9) this is found by iertion 34
 #for case 3 (geology 2 and source A) the source was found n 18 iterations
