@@ -6,6 +6,5 @@ plotGeneratedFunction.R,
 results for application and histogram plots code.R,	
 runEGO.R, 
 functionGenerator.R,
-image.scale.R	and
-lhslike.Rda are the code files used for my Application 
+image.scale.R	are the code files used for my Application 
 (Chapter 4)
