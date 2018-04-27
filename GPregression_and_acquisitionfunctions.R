@@ -1,3 +1,20 @@
+#The first section of the following code produces plots for Figure 1.1, Figure 2.1, Figure 2.2.
+#The GP regression section follows the code produced by James Keirstead: "Gaussian process regression with R" April 5, 2012.
+#The code can be sourced here https://www.r-bloggers.com/gaussian-process-regression-with-r/
+
+#This code uses the package "GPfit" written by Blake MacDonald and Pritam Ranjan and Hugh Chipman, published in 2015.
+#The url is https://cran.r-project.org/web/packages/GPfit/index.html
+#This code uses the package "MASS" written by Brian Ripley et. al., published in 2016.
+#The url is https://cran.r-project.org/web/packages/MASS/MASS.pdf
+#This code uses the package "gridExtra" written by Baptiste Augie, published in 2017.
+#The url is https://cran.r-project.org/web/packages/gridExtra/index.html
+#This code uses the package "plyr" written by Hadley Wickham, published in 2016.
+#The url for this package is https://cran.r-project.org/web/packages/plyr/plyr.pdf
+#This code uses the package "reshape2" written by Hadley Wickham, published in 2017.
+#The url for this package is https://cran.r-project.org/web/packages/reshape2/reshape2.pdf
+#This code uses the package "ggplot2" written by Haldey Wickham and Winston Chang, published in 2016.
+#The url for this package is https://cran.r-project.org/web/packages/ggplot2/ggplot2.pdf
+
 library(GPfit)
 require(MASS)
 require(gridExtra)
@@ -48,15 +65,13 @@ objectivefunction <- ggplot(obj)+
   theme_bw()
 objectivefunction
 #shows objective function and 3 functions drawn from GP using squared exponential function
-fig2a <- ggplot(valuesa,aes(x=x,y=value), obj) +
+a <- ggplot(valuesa,aes(x=x,y=value), obj) +
   geom_rect(xmin=-Inf, xmax=Inf, ymin=-2, ymax=2, fill="grey80") +
   geom_line(aes(group=variable, color=variable)) +
   geom_line(aes(x1,y1), linetype=2) +
   theme(legend.position="none")+
   scale_y_continuous(lim=c(-3,3), name="f(x)") +
   xlab("input, x") 
-
-fig2a
 
 #objective function as dotted line (for plots)
 objfn <- ggplot(obj)+
@@ -86,7 +101,7 @@ for (i in 1:n.samples) {
 valuesb <- cbind(x=x.star,as.data.frame(valuesb))
 valuesb <- melt(valuesb,id="x")
 #posterior distribution given training set with noise
-fig2b <- ggplot(valuesb ,aes(x=x,y=value), obj) +
+b <- ggplot(valuesb ,aes(x=x,y=value), obj) +
   geom_line(aes(group=variable), colour="grey80") +
   geom_path(data=data.frame(x=x.star,y=f.bar.star), aes(x=x,y=y),colour="#E69F00") +
   geom_point(data=f,aes(x=x,y=y)) +
@@ -94,11 +109,8 @@ fig2b <- ggplot(valuesb ,aes(x=x,y=value), obj) +
   theme_bw() +
   scale_y_continuous(lim=c(-4,4), name="output, f(x)") +
   xlab("input, x")
-fig2b
 
-
-#fig2c
-
+#Add a further point for evaluation x=13
 x3 <- c(4, 10, 17, 13)
 y3 <- eg(x3)
 f <- data.frame(x=x3, y=y3)
@@ -123,7 +135,7 @@ for (i in 1:n.samples) {
 valuesc <- cbind(x=x.star,as.data.frame(valuesc))
 valuesc <- melt(valuesc,id="x")
 #posterior distribution given training set with further point and noise
-fig2c <- ggplot(valuesc ,aes(x=x,y=value), obj) +
+c <- ggplot(valuesc ,aes(x=x,y=value), obj) +
   geom_line(aes(group=variable), colour="grey80") +
   geom_path(data=data.frame(x=x.star,y=f.bar.star2), aes(x=x,y=y),colour="#E69F00") +
   geom_point(data=f,aes(x=x,y=y)) +
@@ -131,12 +143,12 @@ fig2c <- ggplot(valuesc ,aes(x=x,y=value), obj) +
   theme_bw() +
   scale_y_continuous(lim=c(-3,4), name="output, f(x)") +
   xlab("input, x")
-fig2c
 
 #Figure 2.1
 require(gridExtra)
-grid.arrange(fig2a, fig2b, fig2c)
+grid.arrange(a, b, c)
 
+#The following code is for the Acquisition functions (Chapter 3) and produces plots for Figure 3.1, Figure 3.2, Figure 3.3.
 
 #GP-UCB ACQUSITION FUNCTION
 UCB <- function(muNew, stdNew, t, d, v=1, delta=0.1){
@@ -159,7 +171,7 @@ gg2
 which.max(ucbacq0)
 #29
 #search xo for 29th element as x entry in geom_point
-grid.arrange(fig2b, gg2)
+grid.arrange(b, gg2)
 
 
 #finding fMax
@@ -178,7 +190,7 @@ gg3 <- ggplot(PIacq2)+
   geom_point(x=12.985714, y=max(PIacq0), colour="red")+
   theme_bw()
 gg3
-grid.arrange(fig2b, gg3)
+grid.arrange(b, gg3)
 #finding maximum of PI
 which.max(PIacq0)
 #29
@@ -201,5 +213,5 @@ gg4
 #finding max of EI for geom_point
 which.max(EIacq0)
 #29
-grid.arrange(fig2b, gg4)
+grid.arrange(b, gg4)
 
