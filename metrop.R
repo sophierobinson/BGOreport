@@ -1,3 +1,9 @@
+#The following code is the code used for Example 2.3.1 and Figure 2.7
+
+#This code uses the package "ggplot2" written by Haldey Wickham and Winston Chang, published in 2016.
+#The url for this package is https://cran.r-project.org/web/packages/ggplot2/ggplot2.pdf
+
+require(ggplot2)
 
 target <- function(X){ 
   t = 0.3*exp(-0.2*X^2) 
